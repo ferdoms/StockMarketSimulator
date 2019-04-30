@@ -6,144 +6,45 @@
 package dao;
 
 import entities.Investor;
-import util.HibernateUtil;
-
 import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import repository.InvestorRepository;
 
 /**
  *
- * @author jacqu
+ * @author Joao Pedro Haddad Oliveira
  */
 public class InvestorDao implements Dao <Investor>{
     
-    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    Transaction transaction = null;
+    @Autowired
+    InvestorRepository investors;
     
    
     @Override
     public void save (Investor i) {
-        Session session = sessionFactory.openSession();
-        
-        try {
-
-            //Start a transaction
-            transaction = session.beginTransaction();
-            //Save object investor
-            session.save(i);
-            //Commit transaction
-            transaction.commit();
-                    
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+        investors.save(i);
     }
 
     @Override
     public Investor getById(int id) {
-        Session session = sessionFactory.openSession();
-        
-        try {
-            //Start a transaction
-            transaction = session.beginTransaction();
-            //Get investor by primary key id
-            Investor  i = (Investor) session.get(Investor.class, id);
-            //Commit transaction
-            transaction.commit();
-            //Return company
-            return i;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return null;
+        Optional<Investor> i = this.investors.findById(new Long(id));
+        return i.get();
     }   
 
     @Override
     public List<Investor> getAll() {
-        Session session = sessionFactory.openSession();
-        
-        try {
-
-            //Start a transaction
-            transaction = session.beginTransaction();
-            //Save object
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-            //Create CriteriaQuery
-            CriteriaQuery<Investor> criteria = builder.createQuery(Investor.class);
-            //Specify criteria root
-            criteria.from(Investor.class);
-            //Execute query
-            List<Investor> investors = session.createQuery(criteria).getResultList();
-            //Return all investors
-            return investors;
-
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return null;
+        return this.investors.findAll();
     }
 
     @Override
     public void update(Investor i) {        
-        Session session = sessionFactory.openSession();
-        
-        try {
-
-            //Start a transaction
-            transaction = session.beginTransaction();
-            session.update(i);
-            transaction.commit();
-                        
-       } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+        this.investors.save(i);
     }
 
     @Override
     public void delete(int id) {
-        Session session = sessionFactory.openSession();
-        
-        try {
-
-            //Start a transaction
-            transaction = session.beginTransaction();
-            Investor investor = (Investor) session.load(Investor.class, id);
-            session.delete(investor);
-            transaction.commit();
-                        
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    } 
+        Optional<Investor> i = this.investors.findById(new Long(id));
+        this.investors.delete(i.get());
+    }
 }
