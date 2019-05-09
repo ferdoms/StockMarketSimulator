@@ -30,6 +30,11 @@ public class CompanyDao implements Dao<Company> {
     public void save(Company c) {
         companies.save(c);
     }
+    
+    @Override
+    public void saveAll(List<Company> companyList) {
+        companies.saveAll(companyList);
+    }
 
     @Override
     public Company getById(int id) {

@@ -28,8 +28,11 @@ public class TransactionDao implements Dao<TransactionRecord> {
     public void save(TransactionRecord tr) {
         transactions.save(tr);
     }
+    @Override
+    public void saveAll(List<TransactionRecord> transactionList) {
+        transactions.saveAll(transactionList);
+    }
     
-
     @Override
     public TransactionRecord getById(int id) {
         Optional<TransactionRecord> tr = this.transactions.findById(new Long(id));

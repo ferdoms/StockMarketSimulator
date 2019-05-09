@@ -27,7 +27,10 @@ public class InvestmentDao implements Dao <Investment> {
     public void save(Investment investment) {
         investments.save(investment);
     }
-    
+    @Override
+    public void saveAll(List<Investment> investmentList) {
+        investments.saveAll(investmentList);
+    }
 
     @Override
     public Investment getById(int id) {

@@ -22,10 +22,14 @@ public class InvestorDao implements Dao <Investor>{
     @Autowired
     InvestorRepository investors;
     
-   
     @Override
     public void save (Investor i) {
         investors.save(i);
+    }
+    
+    @Override
+    public void saveAll(List<Investor> investorList) {
+        investors.saveAll(investorList);
     }
 
     @Override
