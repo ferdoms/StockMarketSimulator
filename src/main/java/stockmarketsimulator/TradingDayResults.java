@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.stockmarketsimulator.StockMarketSimulator.observable;
-
+package stockmarketsimulator;
 
 /**
  *
- * @author fernandoms
+ * @author jacqu
  */
-public interface EventListener<E> {
-    abstract void update(String eventType, E item);
+public class TradingDayResults {
+    
 }

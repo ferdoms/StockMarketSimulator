@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.stockmarketsimulator.StockMarketSimulator.repository;
-import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Share;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 /**
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * 
  */
 @Repository
-public interface InvestorRepository extends JpaRepository<Investor, Long>{
+public interface ShareRepository extends JpaRepository<Share, Long>{
 
 }

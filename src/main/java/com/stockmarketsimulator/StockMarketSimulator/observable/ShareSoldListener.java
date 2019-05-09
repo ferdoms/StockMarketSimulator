@@ -1,12 +1,11 @@
-package observable;
+package com.stockmarketsimulator.StockMarketSimulator.observable;
 
-import dao.InvestmentDao;
-import entities.Investment;
-import entities.Share;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestmentDao;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investment;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Share;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
-import observable.EventListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

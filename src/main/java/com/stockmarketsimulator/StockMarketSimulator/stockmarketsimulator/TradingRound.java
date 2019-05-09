@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarketsimulator;
+package com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator;
 
-import entities.Investor;
-import interfaces.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
 

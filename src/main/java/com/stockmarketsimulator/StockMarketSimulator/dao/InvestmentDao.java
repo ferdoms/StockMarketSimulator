@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package com.stockmarketsimulator.StockMarketSimulator.dao;
 
-import entities.Investment;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investment;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.InvestmentRepository;
+import com.stockmarketsimulator.StockMarketSimulator.repository.InvestmentRepository;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author fernandoms
  */
+@Service
 public class InvestmentDao implements Dao <Investment> {
     
     @Autowired
