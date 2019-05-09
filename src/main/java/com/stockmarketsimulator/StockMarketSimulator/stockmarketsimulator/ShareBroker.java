@@ -29,21 +29,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShareBroker implements Broker {
     
-    private int transactionsPeformed;
+//    private int transactionsPeformed;
+    List<TransactionRecord> transactions;
     public EventManager events;
     @Autowired
-    InvestmentDao investorDao;
+    InvestmentDao investmentDao;
     @Autowired
     TransactionDao transactionDao;
     
     public ShareBroker(){
+        transactions = new ArrayList<TransactionRecord>();
         this.events = new EventManager("sharesSold", "transactionsPeformed");
         this.events.subscribe("transactionsPeformed", new TransactionPerfomedListener());
     }
     @Override
     public Investment[] investmentsUpTo(int amount){
         // get list of investments
-        List<Investment> temp = investorDao.getAll();
+        List<Investment> temp = investmentDao.getAll();
         
         // filter investments that has no shares available
         temp.removeIf(i-> (((Share)i).getAmount() < 1));
@@ -65,28 +67,27 @@ public class ShareBroker implements Broker {
         while(comps.hasNext()){
             Company company = (Company)comps.next();
             Investment share = new Share(company);
-            investorDao.save(share);
+            investmentDao.save(share);
             sharesSoldListener.addShare(share);
         }
         this.events.subscribe("sharesSold", sharesSoldListener);
     }
 
-    
     public void recordTransaction(Investor investor, Investment investment) {
         TransactionRecord record = new TransactionRecord(investor,investment);
-        transactionDao.save(record);
+        transactions.add(record);
     }
     public void performTransaction(Investor investor, Investment investment ){
         try{
             investor.confirmAquisition(investment);
             this.recordTransaction(investor, investment);
-            transactionsPeformed++;
             this.events.notify("sharesSold", investment);
-            this.events.notify("transactionsPeformed", transactionsPeformed);
-            
-            
+            this.events.notify("transactionsPeformed", transactions.size());
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+    public void closeMarket(){
+        transactionDao.saveAll(transactions);
     }
 }

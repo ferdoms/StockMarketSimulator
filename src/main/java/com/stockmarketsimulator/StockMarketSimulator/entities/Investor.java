@@ -87,7 +87,6 @@ public class Investor {
         int temp = this. getBudget();
         temp = temp -investment.getValue();
         this.setBudget(temp);
-        new InvestorDao().update(this);
     }
 
     @Override

@@ -43,9 +43,9 @@ public class Simulator {
         for(int n=1; n<=amount; n++){
            director.constructCompany(comBuilder);
            Company newCompany = comBuilder.getObject();
-           companyDao.save(newCompany);
            companies.add(newCompany);
         }
+        companyDao.saveAll(companies);
     }
     
     public void loadInvestors(int amount){
@@ -57,9 +57,10 @@ public class Simulator {
         for(int n=1; n<=amount; n++){
             director.constructInvestor(invBuilder);
             Investor newInvestor = invBuilder.getObject();
-           investorDao.save(newInvestor);
            investors.add(newInvestor);
         }
+        
+           investorDao.saveAll(investors);
     }
     public void loadBroker(Broker broker){
         if(broker instanceof ShareBroker){
@@ -92,6 +93,9 @@ public class Simulator {
         // if there are still shares and buyers with budget, keep trading.
         if((broker.investmentsUpTo(topBdgInvestor.getBudget()).length>0)){
             this.tradingDay();
+        }else{
+            broker.closeMarket();
+            investorDao.saveAll(investors);
         }
     }
 
