@@ -58,9 +58,9 @@ public class CompanyController {
         
         
         
-//        Simulator sim = new Simulator();
+//        Simulator sim = new Simulator();s
         System.out.println("loading companies");
-        sim.loadCompanies(10);
+        sim.loadCompanies(100);
         System.out.println("loading investors");
         sim.loadInvestors(100);
         System.out.println("loading broker");

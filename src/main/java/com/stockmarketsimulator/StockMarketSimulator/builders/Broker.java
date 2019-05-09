@@ -26,6 +26,6 @@ public interface Broker {
     
     public void recordTransaction(Investor investor, Investment investment);
     
-    public class Report{};
+    public void closeMarket();
     
 }
