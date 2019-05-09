@@ -6,7 +6,7 @@
 package stockmarketsimulator;
 
 import entities.Investor;
-import interfaces.Broker;
+import builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
 

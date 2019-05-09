@@ -12,7 +12,7 @@ import dao.CompanyDao;
 import dao.InvestorDao;
 import entities.Company;
 import entities.Investor;
-import interfaces.Broker;
+import builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfaces;
+package builders;
 
 /**
  *
@@ -13,6 +13,6 @@ public interface CompanyBuilderInterface {
     
     public void setName(String name);
     public void setNShares(int amount);
-    public void IPOShareValue(int value);
+    public void setIPOShareValue(int value);
     
 }

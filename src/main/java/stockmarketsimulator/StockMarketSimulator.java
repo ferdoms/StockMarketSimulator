@@ -18,7 +18,7 @@ import entities.Investment;
 import entities.Investor;
 import entities.Share;
 import entities.TransactionRecord;
-import interfaces.Broker;
+import builders.Broker;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

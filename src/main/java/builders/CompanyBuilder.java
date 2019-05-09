@@ -12,7 +12,7 @@ import entities.Company;
  *
  * @author fernandoms
  */
-public class CompanyBuilder {
+public class CompanyBuilder implements CompanyBuilderInterface {
 
     private String name;
     private int nShare;
@@ -22,14 +22,18 @@ public class CompanyBuilder {
         this.name = name;
     }
     
-    public void setNShare(int amount){
-        this.nShare = amount;
-    }
-    public void setIPOShareValue(int value){
-        this.IPOSharePrice = value;
-    }
     public Company getObject(){
         return new Company(this.name, this.nShare, this.IPOSharePrice);
+    }
+
+    @Override
+    public void setNShares(int amount) {
+        this.nShare = amount;
+    }
+
+    @Override
+    public void setIPOShareValue(int value) {
+        this.IPOSharePrice = value;
     }
     
 }

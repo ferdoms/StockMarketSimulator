@@ -5,7 +5,6 @@
  */
 package builders;
 
-import interfaces.InvestorBuilderInterface;
 import entities.Investor;
 /**
  *

@@ -9,7 +9,7 @@ import dao.InvestmentDao;
 import dao.TransactionDao;
 import entities.Company;
 import entities.Investor;
-import interfaces.Broker;
+import builders.Broker;
 import entities.Investment;
 import java.util.ArrayList;
 import entities.Share;

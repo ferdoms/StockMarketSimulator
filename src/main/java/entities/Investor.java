@@ -7,7 +7,7 @@ package entities;
 
 import dao.InvestmentDao;
 import dao.InvestorDao;
-import interfaces.Broker;
+import builders.Broker;
 import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -28,7 +28,7 @@ public class Director {
     public void constructCompany(CompanyBuilder builder){
         String name = this.cname[rand.nextInt(this.cname.length)];
         builder.setName(name);
-        builder.setNShare(rand.nextInt(500)+500);
+        builder.setNShares(rand.nextInt(500)+500);
         builder.setIPOShareValue(rand.nextInt(90)+10);
     }   
 }

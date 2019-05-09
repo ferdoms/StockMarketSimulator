@@ -24,7 +24,7 @@ public class TransactionPerfomedListener implements EventListener<Integer>{
     private Integer transactionsPerformed = 0;
   
     public void update(String eventType, Integer tp) {
-        if((tp%10)==0){
+        /*if((tp%10)==0){
             List<Object[]> list = new TransactionDao().getLowDemandInvestment();
             Iterator iList = list.iterator();
             while(iList.hasNext()){
@@ -37,8 +37,8 @@ public class TransactionPerfomedListener implements EventListener<Integer>{
                     "\n Sold " + (old.getAmount() - ((Share)share).getAmount()) +
                     "\n Increase " + old.getValue() + " -> " + share.getValue());
                 new InvestmentDao().update(share);
-            }
+            
                 
-        }       
+        }  */     
     }
 }
