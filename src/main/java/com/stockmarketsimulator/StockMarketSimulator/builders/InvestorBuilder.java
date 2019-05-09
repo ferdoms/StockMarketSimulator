@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package builders;
+package com.stockmarketsimulator.StockMarketSimulator.builders;
 
-import entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
 /**
  *
  * @author fernandoms

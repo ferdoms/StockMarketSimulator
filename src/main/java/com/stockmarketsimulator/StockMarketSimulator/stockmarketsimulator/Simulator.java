@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarketsimulator;
+package com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator;
 
-import builders.CompanyBuilder;
-import builders.Director;
-import builders.InvestorBuilder;
-import dao.CompanyDao;
-import dao.InvestorDao;
-import entities.Company;
-import entities.Investor;
-import builders.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.builders.CompanyBuilder;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Director;
+import com.stockmarketsimulator.StockMarketSimulator.builders.InvestorBuilder;
+import com.stockmarketsimulator.StockMarketSimulator.dao.CompanyDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestorDao;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
 

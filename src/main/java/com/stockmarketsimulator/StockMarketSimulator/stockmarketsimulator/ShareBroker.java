@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarketsimulator;
+package com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator;
 
-import dao.InvestmentDao;
-import dao.TransactionDao;
-import entities.Company;
-import entities.Investor;
-import builders.Broker;
-import entities.Investment;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestmentDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.TransactionDao;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investment;
 import java.util.ArrayList;
-import entities.Share;
-import entities.TransactionRecord;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Share;
+import com.stockmarketsimulator.StockMarketSimulator.entities.TransactionRecord;
 import java.util.Iterator;
 import java.util.List;
-import observable.ShareSoldListener;
-import observable.EventManager;
-import observable.TransactionPerfomedListener;
+import com.stockmarketsimulator.StockMarketSimulator.observable.ShareSoldListener;
+import com.stockmarketsimulator.StockMarketSimulator.observable.EventManager;
+import com.stockmarketsimulator.StockMarketSimulator.observable.TransactionPerfomedListener;
 
 /**
  *

@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package builders;
+package com.stockmarketsimulator.StockMarketSimulator.builders;
 
 /**
  *
- * @author fernandoms
+ * @author jacqu
  */
 public interface InvestorBuilderInterface {
     
     public void setFirstName(String firstName);
     public void setLastName(String lName);
     public void setBudget(int budget);
-    
     
 }

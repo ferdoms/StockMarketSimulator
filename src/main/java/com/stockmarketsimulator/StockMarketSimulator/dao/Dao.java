@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package com.stockmarketsimulator.StockMarketSimulator.dao;
 
-import entities.Company;
 import java.util.List;
-import java.util.Optional;
+
 
 /**
  *

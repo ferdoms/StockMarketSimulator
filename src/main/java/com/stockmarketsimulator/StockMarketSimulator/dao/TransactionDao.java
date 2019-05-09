@@ -4,15 +4,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package com.stockmarketsimulator.StockMarketSimulator.dao;
 
-import entities.TransactionRecord;
+import com.stockmarketsimulator.StockMarketSimulator.entities.TransactionRecord;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.TransactionRepository;
+import com.stockmarketsimulator.StockMarketSimulator.repository.TransactionRepository;
 /**
  *
  * @author Joao Pedro H. Oliveira

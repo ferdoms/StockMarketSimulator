@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package builders;
+package com.stockmarketsimulator.StockMarketSimulator.builders;
 
 import java.util.Random;
-import entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
 
 /**
  *
