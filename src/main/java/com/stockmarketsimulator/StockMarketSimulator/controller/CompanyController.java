@@ -8,6 +8,8 @@ package com.stockmarketsimulator.StockMarketSimulator.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import stockmarketsimulator.ShareBroker;
+import stockmarketsimulator.Simulator;
 
 /**
  *
@@ -22,7 +24,19 @@ public class CompanyController {
      
     @GetMapping("/teste") // Finds all stored lecturers in a pageable format
     public String teste(){
-        return "teste";
+        
+        Simulator sim = new Simulator();
+        System.out.println("loading companies");
+        sim.loadCompanies(100);
+        System.out.println("loading investors");
+        sim.loadInvestors(100);
+        System.out.println("loading broker");
+        
+        sim.loadBroker(new ShareBroker());
+        System.out.println("Transactions started");
+        sim.tradingDay();
+        return "foi";
+//        return "teste";
     }
     
 }

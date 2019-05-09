@@ -20,7 +20,7 @@ import stockmarketsimulator.Simulator;
 @RequestMapping("/stockmarket") 
 public class StockMarketController {
     
-    @GetMapping("/")
+    @GetMapping()
     public String simulate(){
         Simulator sim = new Simulator();
         System.out.println("loading companies");

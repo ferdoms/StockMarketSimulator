@@ -125,6 +125,13 @@
 
                             </footer>
                             <script>
+                                (async ()=>{
+                                    var res = await fetch("http://localhost:4500/company/teste")
+                                            .then(res =>{
+                                                return res;
+                                            })
+                                    console.log("tentei", res);
+                                })();
                             </script>
     </body>
 </html>
