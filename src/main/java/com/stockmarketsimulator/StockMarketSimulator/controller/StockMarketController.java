@@ -17,11 +17,11 @@ import stockmarketsimulator.Simulator;
  */
 
 @RestController
-@RequestMapping("api/stock-market") // lecturers endpoint
+@RequestMapping("/stockmarket") 
 public class StockMarketController {
     
-    @GetMapping()
-    public void simulate(){
+    @GetMapping("/")
+    public String simulate(){
         Simulator sim = new Simulator();
         System.out.println("loading companies");
         sim.loadCompanies(100);
@@ -32,5 +32,6 @@ public class StockMarketController {
         sim.loadBroker(new ShareBroker());
         System.out.println("Transactions started");
         sim.tradingDay();
+        return "foi";
     }
 }

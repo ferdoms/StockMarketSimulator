@@ -22,7 +22,7 @@ public class CompanyBuilder {
         this.name = name;
     }
     
-    public void setNShare(int amount){
+    public void setNShares(int amount){
         this.nShare = amount;
     }
     public void setIPOShareValue(int value){
