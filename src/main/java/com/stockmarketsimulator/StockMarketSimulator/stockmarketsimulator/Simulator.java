@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarketsimulator;
+package com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator;
 
-import builders.CompanyBuilder;
-import builders.Director;
-import builders.InvestorBuilder;
-import dao.CompanyDao;
-import dao.InvestorDao;
-import entities.Company;
-import entities.Investor;
-import builders.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.builders.CompanyBuilder;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Director;
+import com.stockmarketsimulator.StockMarketSimulator.builders.InvestorBuilder;
+import com.stockmarketsimulator.StockMarketSimulator.dao.CompanyDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestorDao;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -25,7 +26,10 @@ public class Simulator {
     public ArrayList<Company> companies = new ArrayList<Company>();
     public ArrayList<Investor> investors = new ArrayList<Investor>();
     Broker broker = null;
-    
+    @Autowired
+    CompanyDao companyDao;
+    @Autowired
+    InvestorDao investorDao;
     
     public void loadCompanies(int amount){
         // instantiate company's builder
@@ -35,9 +39,9 @@ public class Simulator {
         
         //loop over elements
         for(int n=1; n<=amount; n++){
-            director.constructCompany(comBuilder);
-            Company newCompany = comBuilder.getObject();
-           new CompanyDao().save(newCompany);
+           director.constructCompany(comBuilder);
+           Company newCompany = comBuilder.getObject();
+           companyDao.save(newCompany);
            companies.add(newCompany);
         }
     }
@@ -51,7 +55,7 @@ public class Simulator {
         for(int n=1; n<=amount; n++){
             director.constructInvestor(invBuilder);
             Investor newInvestor = invBuilder.getObject();
-           new InvestorDao().save(newInvestor);
+           investorDao.save(newInvestor);
            investors.add(newInvestor);
         }
     }

@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package observable;
+package com.stockmarketsimulator.StockMarketSimulator.observable;
 
-import entities.Investment;
-import entities.Share;
+
 /**
  *
  * @author fernandoms

@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stockmarketsimulator;
+package com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator;
 
-import dao.InvestmentDao;
-import dao.TransactionDao;
-import entities.Company;
-import entities.Investor;
-import builders.Broker;
-import entities.Investment;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestmentDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.TransactionDao;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investor;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investment;
 import java.util.ArrayList;
-import entities.Share;
-import entities.TransactionRecord;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Share;
+import com.stockmarketsimulator.StockMarketSimulator.entities.TransactionRecord;
 import java.util.Iterator;
 import java.util.List;
-import observable.ShareSoldListener;
-import observable.EventManager;
-import observable.TransactionPerfomedListener;
+import com.stockmarketsimulator.StockMarketSimulator.observable.ShareSoldListener;
+import com.stockmarketsimulator.StockMarketSimulator.observable.EventManager;
+import com.stockmarketsimulator.StockMarketSimulator.observable.TransactionPerfomedListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -28,6 +29,10 @@ public class ShareBroker implements Broker {
     
     private int transactionsPeformed;
     public EventManager events;
+    @Autowired
+    InvestmentDao investorDao;
+    @Autowired
+    TransactionDao transactionDao;
     
     public ShareBroker(){
         this.events = new EventManager("sharesSold", "transactionsPeformed");
@@ -36,7 +41,7 @@ public class ShareBroker implements Broker {
     @Override
     public Investment[] investmentsUpTo(int amount){
         // get list of investments
-        List<Investment> temp = new InvestmentDao().getAll();
+        List<Investment> temp = investorDao.getAll();
         
         // filter investments that has no shares available
         temp.removeIf(i-> (((Share)i).getAmount() < 1));
@@ -58,7 +63,7 @@ public class ShareBroker implements Broker {
         while(comps.hasNext()){
             Company company = (Company)comps.next();
             Investment share = new Share(company);
-            new InvestmentDao().save(share);
+            investorDao.save(share);
             sharesSoldListener.addShare(share);
         }
         this.events.subscribe("sharesSold", sharesSoldListener);
@@ -67,7 +72,7 @@ public class ShareBroker implements Broker {
     
     public void recordTransaction(Investor investor, Investment investment) {
         TransactionRecord record = new TransactionRecord(investor,investment);
-        new TransactionDao().save(record);
+        transactionDao.save(record);
     }
     public void performTransaction(Investor investor, Investment investment ){
         try{

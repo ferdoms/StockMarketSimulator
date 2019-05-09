@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package com.stockmarketsimulator.StockMarketSimulator.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import stockmarketsimulator.ShareBroker;
-import stockmarketsimulator.Simulator;
+import com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator.ShareBroker;
+import com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator.Simulator;
 
 /**
  *
@@ -20,17 +20,17 @@ import stockmarketsimulator.Simulator;
 @RequestMapping("/stockmarket") 
 public class StockMarketController {
     
-    @GetMapping("/")
+    @GetMapping()
     public String simulate(){
         Simulator sim = new Simulator();
         System.out.println("loading companies");
         sim.loadCompanies(100);
-        System.out.println("loading investors");
+//        System.out.println("loading investors");
         sim.loadInvestors(100);
-        System.out.println("loading broker");
-        
+//        System.out.println("loading broker");
+//        
         sim.loadBroker(new ShareBroker());
-        System.out.println("Transactions started");
+//        System.out.println("Transactions started");
         sim.tradingDay();
         return "foi";
     }

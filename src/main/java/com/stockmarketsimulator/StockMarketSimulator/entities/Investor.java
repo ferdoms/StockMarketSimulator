@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package com.stockmarketsimulator.StockMarketSimulator.entities;
 
-import dao.InvestmentDao;
-import dao.InvestorDao;
-import builders.Broker;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestorDao;
+import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
 import java.util.Random;
 import javax.persistence.Column;
 import javax.persistence.Entity;
