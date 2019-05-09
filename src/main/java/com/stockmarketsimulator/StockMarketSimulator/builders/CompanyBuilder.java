@@ -22,6 +22,7 @@ public class CompanyBuilder implements CompanyBuilderInterface {
         this.name = name;
     }
     
+
     public Company getObject(){
         return new Company(this.name, this.nShare, this.IPOSharePrice);
     }
