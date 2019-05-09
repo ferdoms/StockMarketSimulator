@@ -27,7 +27,7 @@ public class InvestorDao implements Dao <Investor>{
         investors.save(i);
     }
     
-     @Override
+    @Override
     public void saveAll(List<Investor> investorList) {
         investors.saveAll(investorList);
     }
