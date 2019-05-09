@@ -28,23 +28,29 @@ public class CompanyController {
     
     @Autowired
     CompanyDao companies;
-     
+    
+    @Autowired
+    Simulator sim;
+    
+    @Autowired
+    ShareBroker broker;
+    
     @GetMapping("/teste") // Finds all stored lecturers in a pageable format
     public String teste(){
-        
-        CompanyBuilder comBuilder = new CompanyBuilder();
-        // instantiate director's object
-        Director director = new Director();
-        
-//        loop over elements
-        for(int n=1; n<=10; n++){
-            director.constructCompany(comBuilder);
-            Company newCompany = comBuilder.getObject();
-            
-                
-         companies.save(newCompany);
-//           new CompanyDao().save(newCompany);
-        }
+//        
+//        CompanyBuilder comBuilder = new CompanyBuilder();
+//        // instantiate director's object
+//        Director director = new Director();
+//        
+////        loop over elements
+//        for(int n=1; n<=10; n++){
+//            director.constructCompany(comBuilder);
+//            Company newCompany = comBuilder.getObject();
+//            
+//                
+//         companies.save(newCompany);
+////           new CompanyDao().save(newCompany);
+//        }
            
         
         
@@ -53,15 +59,15 @@ public class CompanyController {
         
         
 //        Simulator sim = new Simulator();
-//        System.out.println("loading companies");
-//        sim.loadCompanies(10);
-//        System.out.println("loading investors");
-//        sim.loadInvestors(100);
-//        System.out.println("loading broker");
-//        
-//        sim.loadBroker(new ShareBroker());
-//        System.out.println("Transactions started");
-//        sim.tradingDay();
+        System.out.println("loading companies");
+        sim.loadCompanies(10);
+        System.out.println("loading investors");
+        sim.loadInvestors(100);
+        System.out.println("loading broker");
+        
+        sim.loadBroker(broker);
+        System.out.println("Transactions started");
+        sim.tradingDay();
         return "foi";
 //        return "teste";
     }

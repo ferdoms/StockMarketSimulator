@@ -20,11 +20,13 @@ import com.stockmarketsimulator.StockMarketSimulator.observable.ShareSoldListene
 import com.stockmarketsimulator.StockMarketSimulator.observable.EventManager;
 import com.stockmarketsimulator.StockMarketSimulator.observable.TransactionPerfomedListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author fernandoms
  */
+@Component
 public class ShareBroker implements Broker {
     
     private int transactionsPeformed;

@@ -15,6 +15,8 @@ import java.util.List;
 public interface Dao<E> {
 
     public void save(E e);
+    
+    public void saveAll(List<E> e);
 
     public E getById(int id);
 

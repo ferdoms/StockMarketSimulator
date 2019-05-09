@@ -16,11 +16,13 @@ import com.stockmarketsimulator.StockMarketSimulator.builders.Broker;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Joao Pedro H. Oliveira
  */
+@Component
 public class Simulator {
     //creating arraylists for company and investors
     public ArrayList<Company> companies = new ArrayList<Company>();
