@@ -57,4 +57,8 @@ public class CompanyDao implements Dao<Company> {
         Optional<Company>  c = this.companies.findById(new Long(id));
         this.companies.delete(c.get());
     } 
+    @Override
+    public void deleteAll() {
+        this.companies.deleteAll();
+    }
 }

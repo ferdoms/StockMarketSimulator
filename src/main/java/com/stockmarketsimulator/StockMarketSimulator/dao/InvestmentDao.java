@@ -55,4 +55,8 @@ public class InvestmentDao implements Dao <Investment> {
         Optional<Investment> i = this.investments.findById(new Long(id));
         this.investments.delete(i.get());
     }  
+    @Override
+    public void deleteAll() {
+        this.investments.deleteAll();
+    }  
 }

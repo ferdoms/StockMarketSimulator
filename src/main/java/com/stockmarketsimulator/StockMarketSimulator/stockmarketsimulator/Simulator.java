@@ -34,33 +34,38 @@ public class Simulator {
     InvestorDao investorDao;
     
     public void loadCompanies(int amount){
-        // instantiate company's builder
-        CompanyBuilder comBuilder = new CompanyBuilder();
-        // instantiate director's object
-        Director director = new Director();
-        
-        //loop over elements
-        for(int n=1; n<=amount; n++){
-           director.constructCompany(comBuilder);
-           Company newCompany = comBuilder.getObject();
-           companies.add(newCompany);
+        if(companyDao.getAll().size()==0){
+            // instantiate company's builder
+            CompanyBuilder comBuilder = new CompanyBuilder();
+            // instantiate director's object
+            Director director = new Director();
+
+            //loop over elements
+            for(int n=1; n<=amount; n++){
+               director.constructCompany(comBuilder);
+               Company newCompany = comBuilder.getObject();
+               companies.add(newCompany);
+            }
+            companyDao.saveAll(companies);
         }
-        companyDao.saveAll(companies);
     }
     
     public void loadInvestors(int amount){
-         // instantiate investor's builder
-        InvestorBuilder invBuilder = new InvestorBuilder();
-        // instantiate director's object
-        Director director = new Director();
-        //loop over elements
-        for(int n=1; n<=amount; n++){
-            director.constructInvestor(invBuilder);
-            Investor newInvestor = invBuilder.getObject();
-           investors.add(newInvestor);
-        }
+        if(investorDao.getAll().size()==0){
         
-           investorDao.saveAll(investors);
+         // instantiate investor's builder
+            InvestorBuilder invBuilder = new InvestorBuilder();
+            // instantiate director's object
+            Director director = new Director();
+            //loop over elements
+            for(int n=1; n<=amount; n++){
+                director.constructInvestor(invBuilder);
+                Investor newInvestor = invBuilder.getObject();
+               investors.add(newInvestor);
+            }
+
+               investorDao.saveAll(investors);
+        }
     }
     public void loadBroker(Broker broker){
         if(broker instanceof ShareBroker){

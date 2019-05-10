@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <!--Import materialize.css-->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Stock Market Report</title>
+        <style>
+            body{background-color:  #f0f0f5;
+            }
+            .info{
+                color: rgb(68, 68, 68);
+                font-size: 18px;
+                font-family:"Trebuchet MS"
+            }
+            .outs{
+                color: rgb(55, 188, 155);
+                font-size: 22px;
+                font-family:"Trebuchet MS"
+            }
+            .outf{
+                color: rgb(255, 74, 104);
+                font-size: 22px;
+                font-family:"Trebuchet MS"
+            }
+            .outt{
+                color: rgb(68, 68, 68);
+                font-size: 22px;
+                font-family:"Trebuchet MS";
+                font-weight: bold
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="navbar-fixed">
+            <nav class="#212121 grey darken-4"> 
+                <div class="nav-wrapper">
+                    <a style="font-size:22px; font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif" href="http://localhost:8080/sketch/" class="brand-logo left">
+                        StockMarket<b>Report</b>
+                        <i style="font-size:30px" class="material-icons">insert_chart</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="http://localhost:8080/stock_market_simulator/"><b style="font-size:12px; font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif">Today</b></a></li>
+            <li><a href="http://localhost:8080/stock_market_simulator/indexes.jsp"><b style="font-size:12px; font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif">Acumulated</b></a></li>
+            <li><a href="http://localhost:8080/stock_market_simulator/"><b style="font-size:12px; font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif">Results</b></a></li>
+        </ul>
+    </div>
+    </nav>
+        <br>
+        <br>
+        <br>
+        </div>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                    "symbols": [
+                        {
+                            "title": "S&P 500","proName": "INDEX:SPX"
+                        },
+                        {
+                            "title": "Shanghai Composite","proName": "INDEX:XLY0"
+                        },
+                        {
+                            "title": "EUR/USD","proName": "FX_IDC:EURUSD"
+                        },
+                        {
+                            "title": "BTC/USD","proName": "BITFINEX:BTCUSD"
+                        },
+                        {
+                            "title": "ETH/USD","proName": "BITFINEX:ETHUSD"
+                        }],
+                    "colorTheme": "dark",
+                    "isTransparent": false,
+                    "displayMode": "adaptive",
+                    "locale": "en"
+                }
+            </script>
+        </div>
+       
+        <!-- TradingView Widget END -->
+        <br>
+        <br>
+        <br>
+        <span style="color: rgb(68, 68, 68);margin-left:30px;font-size: 52px;font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif">Today</span>
+        <br>
+        <div class="container">
+            <div class="row"  style="border-bottom: 1px solid rgb(38, 166, 154)">
+                <div class="col s2"><u class="info">Company</u><br>Highest capital</div>
+                <div class="col s2"><u class="info">Company</u><br>Lowest capital</div>
+                <div class="col s2"><u class="info">Investor</u><br>Highest number of shares</div>
+                <div class="col s2"><u class="info">Investor</u><br>Lowest number of shares</div>
+                <div class="col s2"><u class="info">Investor</u><br>Investment most companies</div>
+                <div class="col s2"><u class="info">Investor</u><br>least companies</div>
+            </div>
+            <div class="row" style="border-bottom: 1px solid rgb(38, 166, 154)">
+                <div id="highestCapital" class="col s2"></div>
+                <div id="lowestCapital" class="col s2"></div>
+                <div id="highestNShares" class="col s2"></div>
+                <div id="lowestNShares" class="col s2"></div>
+                <div id="mostCompanies" class="col s2"></div>
+                <div id="leastCompanies" class="col s2"></div>
+            </div>
+        </div>
+
+                <br>
+                <br>
+                <br>
+                <i style=" margin-left:30px;color: rgb(68, 68, 68);" class="tiny material-icons">account_balance</i>
+                <span style="color: rgb(68, 68, 68); font-family:Trebuchet MS; font-size: 12px"><b>Results for</b></span> 
+                <b><span style="color:  rgb(68, 68, 68); font-size: 12px; font-family:Trebuchet MS;" id="datetime"></span></b>
+                <script>
+                var dt = new Date();
+                document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+                            </script>
+        <footer class="#212121 grey darken-4">
+            <div class="row">
+                <div style="margin-left:30px" class="col-md-12">
+                    <br>
+                    <br>
+                    <br>
+                    <h6  class="white-text "><b>Object Orientation With Design Patterns</b></h4>
+                    <p class="white-text text-lighten-4 ">Fernando Marinho - 2016214</p>
+                    <p class="white-text text-lighten-4">Jacqueline S. Medeiros - 2016273</p>
+                    <p class="white-text text-lighten-4">Joao Pedro H. Oliveira - 2016220</p>
+                </div>
+                <div style="margin-left: 0;color:rgb(38, 166, 154)" class="col l4 offset-l2 s12">
+                    <br>
+                    <br>
+                    <span >© 2019 GROUP A - Information Technology<i class="tiny material-icons">blur_on</i></span>
+                </div>
+            </div>
+            <div>
+                <!--JavaScript at end of body for optimized loading-->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            </div >
+            <div id="loader" style="position:absolute; background-color:  rgba(0,0,0,0.7);top: 0; z-index: 1000; height: 100vh;width: 100vw; text-align: center;">
+                <div style="position: absolute;top: 40%;left: 50%;transform: translate(-50%,-50%)">
+                <span class="blue-text text-lighten-5" style="font-size:26px;">Simulating Market...</span><br>
+                <p class="blue-text text-lighten-5" style="">The simulation takes about 10 minutes, please wait : )</p><br>
+                <div class="preloader-wrapper big active"    style=" margin-top: 20px">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            let report = (async () =>{
+                 await fetch("http://localhost:4500/api/report")
+                    .then(async(res) =>{
+                        let report = await res.json();
+                        let keys = Object.keys(report);
+                        let tableLenght = 0;
+                        let j=0;
+                        for(let k of keys){
+                            
+                        
+                            let className = j%2==0 ? 'outf' : 'outs' ;
+                            
+                            console.log(className, j%2)
+                            let txt=""
+                            for(let i in report[k]){
+                            txt +=`<span class="outt">${report[k][i].name}</span><div class=""><span class="${className}">${report[k][i].value}</span></div>`
+     
+                            }
+                            j++;
+                            document.getElementById(k).innerHTML = txt;
+                        }
+                       
+                    });
+            });
+            (async () =>{
+                var res = await fetch("http://localhost:4500/api/simulator")
+                    .then(async(res) =>{
+                        let response = await res.json();
+                        console.log(response);
+                        if(response.message!="Ok"){
+                            document.getElementById(k).innerHTML = `
+                                <div style="position: absolute;top: 40%;left: 50%;transform: translate(-50%,-50%)">
+                                    <span class="blue-text text-lighten-5" style="font-size:26px;">A error ocurred : (</span><br>
+                                    <p class="blue-text text-lighten-5" style="">Please, run the app again!</p><br>
+                                    </div>`;
+                        } 
+                        report();
+                        document.getElementById("loader").hidden = true;
+                    })
+                }
+            )();
+        </script>
+    </body>
+</html>

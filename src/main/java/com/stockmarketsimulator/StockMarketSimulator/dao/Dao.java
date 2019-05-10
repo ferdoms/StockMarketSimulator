@@ -25,5 +25,8 @@ public interface Dao<E> {
     public void update(E e);
 
     public void delete(int id);
+    
+    public void deleteAll();
+    
 
 }

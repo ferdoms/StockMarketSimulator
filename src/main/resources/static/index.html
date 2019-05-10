@@ -28,7 +28,10 @@
         <br>
         <br>
         <br>
-        <div class="row">
+        <div class="row" style="height: 60vh;">
+            <br>
+            <br>
+            <br>
             <div class="col-md-12"> <!-- Note that "m4 l3" was added -->
             </div>
             <div class="col s12 m8 l6"> <!-- Note that "m4 l3" was added -->
@@ -45,7 +48,15 @@
             <br>
             <div class="col s12 m8 l6"> <!-- Note that "m8 l9" was added -->
                 <ul class="center hide-on-med-and-down">
-                    <li><a style = "font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif; width: 240px" class="waves-effect #26a69a teal lighten-1 btn-large" href="http://localhost:8080/sketch/index_1.html"><b>Show Stock Market</b></a></li>
+                    <li>
+                        <a 
+                            id="simulateBtn"
+                            style = "font-family:Roboto, Helvetica Neue, Helvetica, Arial, sans-serif; width: 240px" 
+                            class="waves-effect #26a69a teal lighten-1 btn-large" 
+                            onclick="simulate()" 
+                            href="http://localhost:4500/simulator.html"><b>Show Stock Market</b>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,7 +70,6 @@
                     <p class="white-text text-lighten-4">Jacqueline S. Medeiros - 2016273</p>
                     <p class="white-text text-lighten-4">Joao Pedro H. Oliveira - 2016220</p>
                 </div>
-<<<<<<< HEAD
                 <div style="margin-left: 0;color:rgb(38, 166, 154)" class="col l4 offset-l2 s12">
                     <br>
                     <br>
@@ -71,39 +81,7 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             </div>
         </footer>
+        <script>
+        </script>
     </body>
 </html>
-=======
-                <footer class="#212121 grey darken-4">
-                                    <div class="row">
-                                        <div style="margin-left:30px" class="col-md-12">
-                                            <br><br><br>
-                                            <h6  class="white-text "><b>Object Orientation With Design Patterns</b></h4>
-                                            <p class="white-text text-lighten-4 ">Fernando Marinho - 2016214</p>
-                                            <p class="white-text text-lighten-4">Jacqueline S. Medeiros - 2016273</p>
-                                            <p class="white-text text-lighten-4">Joao Pedro H. Oliveira - 2016220</p>
-                                        </div>
-                                        <div style="margin-left: 0;color:rgb(38, 166, 154)" class="col l4 offset-l2 s12">
-                                            <br><br>
-                                            <span >© 2019 GROUP A - Information Technology<i class="tiny material-icons">blur_on</i></span>
-                                        </div>
-                                            
-                                    </div >                               
-                                </div>
-          <!--JavaScript at end of body for optimized loading-->
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-</div>
-                            </footer>
-                            <script>
-                                (async ()=>{
-                                    var res = await fetch("http://localhost:4500/company/teste")
-                                            .then(res =>{
-                                                return res;
-                                            })
-                                    console.log("tentei", res);
-                                })();
-                            </script>
-    </body>
-</html>
-
->>>>>>> 67c5ed90f086af39b38b7353abeb4626125a303e

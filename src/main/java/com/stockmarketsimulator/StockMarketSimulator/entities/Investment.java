@@ -29,7 +29,7 @@ public abstract class Investment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
     
     int value = 0;
     
@@ -42,7 +42,7 @@ public abstract class Investment {
     public String getType(){
         return this.investment_type;
     }
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

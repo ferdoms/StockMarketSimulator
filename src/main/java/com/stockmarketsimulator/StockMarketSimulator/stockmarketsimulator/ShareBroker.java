@@ -22,14 +22,10 @@ import com.stockmarketsimulator.StockMarketSimulator.observable.TransactionPerfo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- *
- * @author fernandoms
- */
+
 @Component
 public class ShareBroker implements Broker {
-    
-//    private int transactionsPeformed;
+    List<Investment> investments;
     List<TransactionRecord> transactions;
     public EventManager events;
     @Autowired
@@ -39,6 +35,7 @@ public class ShareBroker implements Broker {
     
     public ShareBroker(){
         transactions = new ArrayList<TransactionRecord>();
+        investments = new ArrayList<Investment>();
         this.events = new EventManager("sharesSold", "transactionsPeformed");
         this.events.subscribe("transactionsPeformed", new TransactionPerfomedListener());
     }
@@ -63,13 +60,15 @@ public class ShareBroker implements Broker {
     @Override
     public void createInvestments(ArrayList<Company> companies) {
         ShareSoldListener sharesSoldListener = new ShareSoldListener();
+        investmentDao.deleteAll();
         Iterator comps = companies.iterator();
         while(comps.hasNext()){
             Company company = (Company)comps.next();
             Investment share = new Share(company);
-            investmentDao.save(share);
-            sharesSoldListener.addShare(share);
+            investments.add(share);
         }
+        investmentDao.saveAll(investments);
+        sharesSoldListener.addInvestments(investments);
         this.events.subscribe("sharesSold", sharesSoldListener);
     }
 
@@ -88,6 +87,7 @@ public class ShareBroker implements Broker {
         }
     }
     public void closeMarket(){
+        transactionDao.deleteAll();
         transactionDao.saveAll(transactions);
     }
 }

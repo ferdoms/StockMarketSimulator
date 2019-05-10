@@ -8,13 +8,21 @@ package com.stockmarketsimulator.StockMarketSimulator.controller;
 import com.stockmarketsimulator.StockMarketSimulator.builders.CompanyBuilder;
 import com.stockmarketsimulator.StockMarketSimulator.builders.Director;
 import com.stockmarketsimulator.StockMarketSimulator.dao.CompanyDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.InvestmentDao;
+import com.stockmarketsimulator.StockMarketSimulator.dao.TransactionDao;
 import com.stockmarketsimulator.StockMarketSimulator.entities.Company;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Investment;
+import com.stockmarketsimulator.StockMarketSimulator.entities.Share;
 import com.stockmarketsimulator.StockMarketSimulator.repository.CompanyRepository;
+import com.stockmarketsimulator.StockMarketSimulator.representational.Response;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator.ShareBroker;
 import com.stockmarketsimulator.StockMarketSimulator.stockmarketsimulator.Simulator;
+import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,42 +31,27 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 @RestController
-@RequestMapping("/company") 
-public class CompanyController {
+@RequestMapping("/api/simulator") 
+public class SimulatorController {
     
-    @Autowired
-    CompanyDao companies;
-    
+//    @Autowired
+//    CompanyDao companies;
+//    
     @Autowired
     Simulator sim;
-    
+//    
     @Autowired
     ShareBroker broker;
+//    
+//    @Autowired
+//    TransactionDao transactionDao;
+//    
+//    @Autowired
+//    InvestmentDao investmentDao;
     
-    @GetMapping("/teste") // Finds all stored lecturers in a pageable format
-    public String teste(){
-//        
-//        CompanyBuilder comBuilder = new CompanyBuilder();
-//        // instantiate director's object
-//        Director director = new Director();
-//        
-////        loop over elements
-//        for(int n=1; n<=10; n++){
-//            director.constructCompany(comBuilder);
-//            Company newCompany = comBuilder.getObject();
-//            
-//                
-//         companies.save(newCompany);
-////           new CompanyDao().save(newCompany);
-//        }
-           
-        
-        
-        
-        
-        
-        
-//        Simulator sim = new Simulator();s
+    @GetMapping() // Finds all stored lecturers in a pageable format
+    public Response simulate(){
+
         System.out.println("loading companies");
         sim.loadCompanies(100);
         System.out.println("loading investors");
@@ -68,8 +61,7 @@ public class CompanyController {
         sim.loadBroker(broker);
         System.out.println("Transactions started");
         sim.tradingDay();
-        return "foi";
-//        return "teste";
+        return new Response("Ok");
     }
-    
+
 }
